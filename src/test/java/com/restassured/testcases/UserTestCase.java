@@ -11,6 +11,7 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+
 import java.io.File;
 
 import java.io.IOException;
@@ -59,7 +60,6 @@ public class UserTestCase {
         Response response = UserEndPoints.createUser(user);
         response.then().log().all();
         Assert.assertEquals(response.getStatusCode(), 200);
-
 
     }
 
