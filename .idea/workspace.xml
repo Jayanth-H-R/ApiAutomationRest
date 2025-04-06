@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="19fe0691-5a30-4eb8-abbc-bb392a76f1ee" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/restassured/endpoints/Routes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/restassured/endpoints/Routes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/restassured/payloads/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/restassured/payloads/Pet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/restassured/testcases/UserTestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/restassured/testcases/UserTestCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/restassured/endpoints/PetEndPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/restassured/endpoints/PetEndPoints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/restassured/testcases/PetTestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/restassured/testcases/PetTestCase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +22,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="CICDIntegration" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -42,28 +46,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.DataFromJson.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;TestNG.PetTestCase.createPet.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.StoreTestCase.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.StoreTestCase.getInventory.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.StoreTestCase.getOrderById.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.StoreTestCase.placeOrder.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.UserTestCase.createUser.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.UserTestCase.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.UserTestCase.getUser.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.UserTestCase.setDataFromJson.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.UserTestCase.updateUser.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.DataFromJson.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TestNG.PetTestCase.createPet.executor": "Run",
+    "TestNG.PetTestCase.executor": "Run",
+    "TestNG.PetTestCase.getPetById.executor": "Run",
+    "TestNG.StoreTestCase.executor": "Run",
+    "TestNG.StoreTestCase.getInventory.executor": "Run",
+    "TestNG.StoreTestCase.getOrderById.executor": "Run",
+    "TestNG.StoreTestCase.placeOrder.executor": "Run",
+    "TestNG.UserTestCase.createUser.executor": "Run",
+    "TestNG.UserTestCase.executor": "Run",
+    "TestNG.UserTestCase.getUser.executor": "Run",
+    "TestNG.UserTestCase.setDataFromJson.executor": "Run",
+    "TestNG.UserTestCase.updateUser.executor": "Run",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
-  <component name="RunManager" selected="TestNG.PetTestCase.createPet">
+}]]></component>
+  <component name="RunManager" selected="TestNG.PetTestCase">
     <configuration name="DataFromJson" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.restassured.utility.DataFromJson" />
       <module name="ApiFrameworkComplete" />
@@ -73,6 +79,23 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PetTestCase" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ApiFrameworkComplete" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.restassured.testcases.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.restassured.testcases" />
+      <option name="MAIN_CLASS_NAME" value="com.restassured.testcases.PetTestCase" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -88,6 +111,24 @@
       <option name="PACKAGE_NAME" value="com.restassured.testcases" />
       <option name="MAIN_CLASS_NAME" value="com.restassured.testcases.PetTestCase" />
       <option name="METHOD_NAME" value="createPet" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PetTestCase.getPetById" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ApiFrameworkComplete" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.restassured.testcases.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.restassured.testcases" />
+      <option name="MAIN_CLASS_NAME" value="com.restassured.testcases.PetTestCase" />
+      <option name="METHOD_NAME" value="getPetById" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -112,49 +153,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StoreTestCase.getOrderById" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="ApiFrameworkComplete" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.restassured.testcases.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.restassured.testcases" />
-      <option name="MAIN_CLASS_NAME" value="com.restassured.testcases.StoreTestCase" />
-      <option name="METHOD_NAME" value="getOrderById" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StoreTestCase.placeOrder" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="ApiFrameworkComplete" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.restassured.testcases.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.restassured.testcases" />
-      <option name="MAIN_CLASS_NAME" value="com.restassured.testcases.StoreTestCase" />
-      <option name="METHOD_NAME" value="placeOrder" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.PetTestCase" />
+        <item itemvalue="TestNG.PetTestCase.getPetById" />
         <item itemvalue="TestNG.PetTestCase.createPet" />
         <item itemvalue="Application.DataFromJson" />
         <item itemvalue="TestNG.StoreTestCase" />
-        <item itemvalue="TestNG.StoreTestCase.getOrderById" />
-        <item itemvalue="TestNG.StoreTestCase.placeOrder" />
       </list>
     </recent_temporary>
   </component>

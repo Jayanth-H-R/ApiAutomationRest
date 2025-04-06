@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/Qapitol QA/IdeaProjects/ApiFrameworkComplete/src/test/resources/updatePet.json">
+        <classes/>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/Qapitol QA/IdeaProjects/ApiFrameworkComplete/src/test/java/com/restassured/testcases/PetTestCase.java">
+        <classes>
+            <class name="com.restassured.testcases.PetTestCase">
+                <methods>
+                    <include name="createPet"/>
+                    <include name="getPetById"/>
+                    <include name="updatePet"/>
+                    <include name="deletePetId"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/Qapitol QA/IdeaProjects/ApiFrameworkComplete/src/test/java/com/restassured/testcases/StoreTestCase.java">
+        <classes>
+            <class name="com.restassured.testcases.StoreTestCase">
+                <methods>
+                    <include name="placeOrder"/>
+                    <include name="getInventory"/>
+                    <include name="getOrderById"/>
+                    <include name="deleteOrderById"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/Qapitol QA/IdeaProjects/ApiFrameworkComplete/src/test/java/com/restassured/testcases/UserTestCase.java">
+        <classes>
+            <class name="com.restassured.testcases.UserTestCase">
+                <methods>
+                    <include name="createUser"/>
+                    <include name="updateUser"/>
+                    <include name="loginUser"/>
+                    <include name="logoutUser"/>
+                    <include name="getUser"/>
+                    <include name="deleteUser"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
