@@ -3,20 +3,22 @@ package com.restassured.testcases;
 import com.github.javafaker.Faker;
 import com.restassured.endpoints.StoreEndPoints;
 import com.restassured.payloads.Store;
+import com.restassured.utility.Reusables;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class StoreTestCase {
+public class StoreTestCase extends Reusables {
     Store store;
     List<Store> storeList;
     Faker fakerData;
 
-    @BeforeClass
+    @BeforeTest
     public void setPayLoads() {
         store = new Store();
         fakerData = new Faker();
@@ -41,39 +43,39 @@ public class StoreTestCase {
 
     }
 
-    @Test()
+    @Test(priority = 0)
     public void placeOrder() {
-        Response resp = StoreEndPoints.placeOrder(store);
+        Response resp = StoreEndPoints.placeOrder(store,"/store/order");
         resp.then().log().all();
-        Assert.assertEquals(resp.statusCode(), 200);
-        Assert.assertEquals(resp.jsonPath().getInt("id"), store.getId());
-        store.setId(resp.jsonPath().getInt("id"));
+        Assert.assertEquals(getStatusCode(resp), 200);
+        Assert.assertEquals(getAttributeIntValue(resp, "id"), store.getId());
+        store.setId(getAttributeIntValue(resp, "id"));
     }
 
-    @Test(dependsOnMethods = "placeOrder")
+    @Test(priority = 1)
     public void getInventory() {
 
-        Response resp = StoreEndPoints.getInventory();
+        Response resp = StoreEndPoints.getInventory("/store/inventory");
         resp.then().log().all();
         Assert.assertEquals(resp.statusCode(), 200);
-
 
     }
 
 
-    @Test(dependsOnMethods = "placeOrder")
+    @Test(priority = 2,dependsOnMethods = "placeOrder")
     public void getOrderById() {
-        Response resp = StoreEndPoints.getOrderById(store.getId());
-        resp.then().log().all();
-        Assert.assertEquals(resp.statusCode(), 200);
+        System.out.println("store id fetched in getOrderById: "+store.getId());
+        Response resp = StoreEndPoints.getOrderById(store.getId(),"/store/order/{id}");
+        resp.then().statusCode(200).log().all();
+        //Assert.assertEquals(resp.statusCode(), 200);
     }
 
-    @Test(dependsOnMethods = "getOrderById")
+    @Test(priority = 3)
     public void deleteOrderById() {
-        Response resp = StoreEndPoints.getOrderById(store.getId());
+        System.out.println("store id fetched in deleteOrderById: "+store.getId());
+        Response resp = StoreEndPoints.deleteOrderById(store.getId(),"/store/order/{id}");
         resp.then().log().all();
         Assert.assertEquals(resp.statusCode(), 200);
     }
-
 
 }

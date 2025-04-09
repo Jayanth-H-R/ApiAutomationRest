@@ -25,8 +25,6 @@ public class ExtentReports  implements ITestListener {
         sparkReporter.config().setTheme(Theme.DARK);
         extent=new com.aventstack.extentreports.ExtentReports();
         extent.attachReporter(sparkReporter); //attaching the spark report to
-//        extent.setSystemInfo("browser", "chrome");
-//        extent.setSystemInfo("environment", "local");
         extent.setSystemInfo("Tester", "Jayanth");
 
     }

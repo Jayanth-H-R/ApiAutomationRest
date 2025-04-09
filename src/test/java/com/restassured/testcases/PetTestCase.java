@@ -1,37 +1,37 @@
 package com.restassured.testcases;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
 import com.restassured.endpoints.PetEndPoints;
 import com.restassured.payloads.Pet;
+import com.restassured.utility.FileUtility;
+import com.restassured.utility.Reusables;
 import io.restassured.response.Response;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
+import org.testng.ITestContext;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.Matchers.*;
-
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
-public class PetTestCase {
+public class PetTestCase extends Reusables {
 
-    Pet pets = new Pet();
+    Pet pets ;
     Faker fakerData;
-    PetTestCase petTc;
-    public static int petId;
+    String json;
+    public static int  petId;
 
-    public String setPets() throws JsonProcessingException {
+@BeforeTest
+    public void setPets() throws JsonProcessingException {
         fakerData = new Faker();
-        //pets=new Pet();
+        pets=new Pet();
         JSONObject jsonBody = new JSONObject();
         //Map<String, Object> jsonBody=new HashMap<>();
-        pets.setId(fakerData.hashCode());
+        pets.setId(fakerData.number().hashCode());
         petId = pets.getId();
         jsonBody.put("id", pets.getId());
         jsonBody.put("name", "doggie");
@@ -49,47 +49,55 @@ public class PetTestCase {
         List<Map<String, Object>> tags = Arrays.asList(tag);
         jsonBody.put("tags", tags);
         jsonBody.put("status", "available");
+
         // Convert the HashMap to a JSON string using Jackson
         ObjectMapper objectMapper = new ObjectMapper();
-        String json = objectMapper.writeValueAsString(jsonBody);
+         json = objectMapper.writeValueAsString(jsonBody);
         System.out.println("pet id is ---> " + pets.getId());
 
-        return json;
-    }
-
-    @Test(priority = 0)
-    public void createPet() throws IOException {
-        //petTc = new PetTestCase();
-        //pets=new Pet();
-        String payload = new String(Files.readAllBytes(Paths.get("./src/test/resources/petpayload.json")));
-        Response resp = PetEndPoints.createPet(payload);
-        resp.then().statusCode(200).body("id", equalTo(1203))
-                .log().all();
-        petId = resp.jsonPath().getInt("id");
-        Assert.assertEquals(resp.jsonPath().getInt("id"), petId);
+       // return json;
     }
 
     @Test(priority = 1)
-    public void getPetById() {
-        System.out.println(petId + "------>");
-        Response resp = PetEndPoints.getPetId(petId);
-        resp.then().statusCode(200).log().all();
-
+    public void createPet(ITestContext context) throws IOException {
+       // String payload = new String(Files.readAllBytes(Paths.get("./src/test/resources/petpayload.json")));
+        Response resp = PetEndPoints.createPet(json,"/pet");
+        resp.then()
+                .log().all();
+        Assert.assertEquals(getStatusCode(resp),200);
+        Assert.assertEquals(getAttributeIntValue(resp,"id"),pets.getId());
+        context.setAttribute("petId",pets.getId());
     }
 
 
+
+
     @Test(priority = 2)
-    public void updatePet() throws IOException {
-        String payLoad = new String(Files.readAllBytes(Paths.get("./src/test/resources/updatePet.json")));
-        Response resp = PetEndPoints.updatePetById(payLoad);
+    public void updatePet(ITestContext context) throws IOException {
+       // String filepath = FileUtility.readData("updatepet");
+        //String payLoad = jsonFileConvert(filepath);
+
+        Response resp = PetEndPoints.updatePetById(json,"/pet");
         resp.then().statusCode(200).log().all();
     }
 
     @Test(priority = 3)
-    public void deletePetId() {
-        Response resp = PetEndPoints.deletePetById(petId);
+    public void getPetById(ITestContext context) {
+        System.out.println(petId + "------>");
+        Object pet_Id= context.getAttribute("petId");
+        System.out.println(pet_Id + "------>");
+        Response resp = PetEndPoints.getPetId(petId,"/pet/{petId}");
         resp.then().statusCode(200).log().all();
     }
 
+    @Test(priority = 4)
+    public void deletePetId(ITestContext context) {
+        Object  pet_Id = context.getAttribute("petId");
+       System.out.println("petId_ in delete request "+pet_Id);
+       System.out.println("petId_ in delete request from petClass"  + pets.getId());
+        Response resp = PetEndPoints.deletePetById(pets.getId(),"/pet/{petId}");
+        resp.then().log().all();
+        Assert.assertEquals(getStatusCode(resp),200);
+    }
 
 }

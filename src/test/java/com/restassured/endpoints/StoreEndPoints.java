@@ -6,34 +6,33 @@ import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.*;
 
-public class StoreEndPoints {
+public class StoreEndPoints extends Routes{
 
-    public static Response placeOrder(Store store) {
-        Response resp = given().header("Content-Type", "application/json")
-                .accept(ContentType.JSON).body(store)
-                .when().post(Routes.placeOrderPet);
+    public static Response placeOrder(Store store,String endPoint) {
+        Response resp = given(setUp()).body(store)
+                .when().post(endPoint);
         return resp;
 
     }
 
-    public static Response getInventory(){
-        Response resp = given().header("Content-Type", "application/json")
-                .accept(ContentType.JSON)
-                .when().get(Routes.getOrderStatus);
+    public static Response getInventory(String endpoint){
+        Response resp = given(setUp())
+                .when().get(endpoint);
         return resp;
     }
 
-    public static Response getOrderById(int id){
-        Response resp=given().header("Content-Type","application/json")
-                .accept(ContentType.JSON)
-                .when().get(Routes.getOrderById+id);
+    public static Response getOrderById(int id, String endpoint){
+        Response resp=given(setUp())
+                .pathParam("id",id).log().all()
+                .when().get(endpoint);
         return resp;
     }
 
-    public static Response deleteOrderById(int id){
-        Response resp=given().header("Content-Type","application/json")
-                .accept(ContentType.JSON)
-                .when().delete(Routes.deleteOrderById+id);
+    public static Response deleteOrderById(int id,String endpoint){
+        Response resp=given(setUp())
+                .pathParam("id",id)
+                .log().all()
+                .when().delete(endpoint);
         return resp;
     }
 

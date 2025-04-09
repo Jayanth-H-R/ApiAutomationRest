@@ -6,55 +6,53 @@ import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.*;
 
-public class UserEndPoints {
+public class UserEndPoints extends Routes{
 
-    public static Response createUser(User userCreatePayload) {
-        Response response = given().header("Content-Type", "application/json")
-                .accept(ContentType.JSON)
+    public static Response createUser(User userCreatePayload,String endpoint) {
+        Response response = given(setUp())
                 .body(userCreatePayload)
-                .when().post(Routes.createUserUrl);
+                .when().post(endpoint);
         return response;
     }
 
 
-    public static Response getUser(String userName) {
-        Response response = given().header("Content-Type", "application/json")
-                .accept(ContentType.JSON)
-                .when().get(Routes.getUserUrl+userName);
+    public static Response getUser(String userName, String endpoint) {
+        Response response = given(setUp())
+                .pathParam("user",userName).log().all()
+                .when().get(endpoint);
 
         return response;
     }
 
-    public static Response updateUser(User userCreatePayload, String userName) {
-        Response response = given().header("Content-Type", "application/json")
-                .accept(ContentType.JSON)
+    public static Response updateUser(User userCreatePayload, String userName, String endpoint) {
+        Response response = given(setUp())
+                .pathParam("user",userName)
                 .body(userCreatePayload)
-                .when().put(Routes.updateUserUrl+userName);
+                .when().put(endpoint);
         return response;
     }
 
-    public static Response deleteUser(String userName) {
+    public static Response deleteUser(String userName, String endpoint) {
 
-        Response response = given()
-                .when().delete(Routes.deleteUserUrl+userName);
+        Response response = given(setUp()).log().all()
+                .pathParam("user",userName)
+                .when().delete(endpoint);
         return response;
 
     }
 
-    public static  Response loginUser(String userName, String password){
-        Response response = given().header("Content-Type", "application/json")
-                .accept(ContentType.JSON)
+    public static  Response loginUser(String userName, String password,String endpoint){
+        Response response = given(setUp())
                 .queryParam("username", userName)
                 .queryParam("password", password)
-                .when().get(Routes.loginUserUrl);
+                .when().get(endpoint);
         return response;
 
     }
 
-    public static  Response logoutUser(){
-        Response response = given().header("Content-Type", "application/json")
-                .accept(ContentType.JSON)
-                .when().get(Routes.logoutUserUrl);
+    public static  Response logoutUser(String endpoint){
+        Response response = given(setUp())
+                .when().get(endpoint);
         return response;
     }
 }
