@@ -8,7 +8,6 @@ import static io.restassured.RestAssured.given;
 public class PetEndPoints extends Routes {
 
     public static Response createPet(String body,String endpoint) {
-
         Response response = given(setUp())
                 .body(body)
                 .when().post(endpoint);

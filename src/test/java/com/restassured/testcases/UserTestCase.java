@@ -3,6 +3,7 @@ package com.restassured.testcases;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
+import com.restassured.endpoints.Routes;
 import com.restassured.endpoints.UserEndPoints;
 import com.restassured.payloads.User;
 import com.restassured.utility.ExtentReports;
@@ -19,7 +20,7 @@ import java.io.IOException;
 import java.util.List;
 
 //@Listeners(ExtentReports.class)
-public class UserTestCase {
+public class UserTestCase extends Routes {
     User user;
     Faker fakerData;
     List<User> userList;
@@ -51,13 +52,13 @@ public class UserTestCase {
         user.setUserStatus(fakerData.hashCode());
         user.setPassword(fakerData.internet().password());
         user.setPhone(fakerData.idNumber().toString());
-        user.setUsername(fakerData.funnyName().toString());
+        user.setUsername(user.getFirstName() + user.getLastName());
     }
 
     @Test(priority = 1)
     public void createUser() {
         //System.out.println(user.getUsername() + " createUser");
-        Response response = UserEndPoints.createUser(user,"/user");
+        Response response = postMethod("/user", user);
         response.then().log().all();
         Assert.assertEquals(response.getStatusCode(), 200);
 
@@ -67,7 +68,7 @@ public class UserTestCase {
     @Test(priority = 2)
     public void getUser() {
         System.out.println(user.getUsername() + " getUser");
-        Response response = UserEndPoints.getUser(user.getUsername(),"/user/{user}");
+        Response response = getMethod("/user/{user}", "user", user.getUsername());
         response.then().log().body();
         Assert.assertEquals(response.getStatusCode(), 200);
     }
@@ -76,17 +77,18 @@ public class UserTestCase {
     @Test(priority = 3)
     public void loginUser() {
         System.out.println(user.getUsername() + " loginUser");
-        Response response = UserEndPoints.loginUser(user.getUsername(), user.getPassword(),"/user/login");
+        Response response = getMethod("/user/login", "username", user.getUsername(), "password", user.getPassword());
+        /* UserEndPoints.loginUser(user.getUsername(), user.getPassword(),"/user/login"); */
         response.then().log().all();
         Assert.assertEquals(response.getStatusCode(), 200);
     }
 
 
-
     @Test(priority = 4)
     public void updateUser() {
         System.out.println(user.getUsername() + " updateUser");
-        Response response = UserEndPoints.updateUser(user, user.getUsername(),"/user/{user}");
+        Response response = putMethod("/user/{user}", user, "user", user.getUsername());
+        /*  UserEndPoints.updateUser(user, user.getUsername(),"/user/{user}"); */
         response.then().log().all();
         Assert.assertEquals(response.getStatusCode(), 200);
 
@@ -95,14 +97,15 @@ public class UserTestCase {
     @Test(priority = 5)
     public void deleteUser() {
         System.out.println(user.getUsername() + " deleteUser");
-        Response response = UserEndPoints.deleteUser(user.getUsername(),"/user/{user}");
+        Response response = deleteMethod("/user/{user}", "user", user.getUsername());
+        /*UserEndPoints.deleteUser(user.getUsername(),"/user/{user}");*/
         response.then().statusCode(200).log().all();
     }
 
     @Test(priority = 6)
     public void logoutUser() {
         System.out.println(user.getUsername() + " logoutUser");
-        Response response = UserEndPoints.logoutUser("/user/logout");
+        Response response = getMethod("/user/logout");
         response.then().log().all();
         Assert.assertEquals(response.getStatusCode(), 200);
     }

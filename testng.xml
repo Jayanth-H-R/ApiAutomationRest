@@ -13,7 +13,7 @@
             <class name="com.restassured.testcases.PetTestCase"/>
             <class name="com.restassured.testcases.StoreTestCase"/>
             <class name="com.restassured.testcases.UserTestCase"/>
+
         </classes>
     </test>
-
 </suite>

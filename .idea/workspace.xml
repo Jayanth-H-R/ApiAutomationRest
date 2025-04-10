@@ -8,15 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/restassured/endpoints/PetEndPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/restassured/endpoints/PetEndPoints.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/restassured/endpoints/Routes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/restassured/endpoints/Routes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/restassured/endpoints/StoreEndPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/restassured/endpoints/StoreEndPoints.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/restassured/endpoints/UserEndPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/restassured/endpoints/UserEndPoints.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/restassured/testcases/PetTestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/restassured/testcases/PetTestCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/restassured/testcases/StoreTestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/restassured/testcases/StoreTestCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/restassured/testcases/UserTestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/restassured/testcases/UserTestCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/restassured/utility/ExtentReports.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/restassured/utility/ExtentReports.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/Reports/testReort.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/Reports/testReort.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/configData.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/configData.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/petpayload.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/petpayload.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,6 +61,7 @@
     "TestNG.PetTestCase.deletePetId.executor": "Run",
     "TestNG.PetTestCase.executor": "Run",
     "TestNG.PetTestCase.getPetById.executor": "Run",
+    "TestNG.PetTestCase.updatePet.executor": "Run",
     "TestNG.StoreTestCase.executor": "Run",
     "TestNG.StoreTestCase.getInventory.executor": "Run",
     "TestNG.StoreTestCase.getOrderById.executor": "Run",
@@ -87,17 +83,7 @@
       <recent name="com.restassured.utility" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.StoreTestCase">
-    <configuration name="C:/Users/Qapitol QA/IdeaProjects/ApiFrameworkComplete/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="ApiFrameworkComplete" />
-      <option name="SUITE_NAME" value="$PROJECT_DIR$/testng.xml" />
-      <option name="TEST_OBJECT" value="SUITE" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="TestNG.UserTestCase">
     <configuration name="PetTestCase" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="ApiFrameworkComplete" />
       <extension name="coverage">
@@ -109,6 +95,42 @@
       <option name="PACKAGE_NAME" value="com.restassured.testcases" />
       <option name="MAIN_CLASS_NAME" value="com.restassured.testcases.PetTestCase" />
       <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PetTestCase.deletePetId" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ApiFrameworkComplete" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.restassured.testcases.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.restassured.testcases" />
+      <option name="MAIN_CLASS_NAME" value="com.restassured.testcases.PetTestCase" />
+      <option name="METHOD_NAME" value="deletePetId" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PetTestCase.getPetById" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ApiFrameworkComplete" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.restassured.testcases.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.restassured.testcases" />
+      <option name="MAIN_CLASS_NAME" value="com.restassured.testcases.PetTestCase" />
+      <option name="METHOD_NAME" value="getPetById" />
+      <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
       <method v="2">
@@ -149,31 +171,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTestCase.createUser" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="ApiFrameworkComplete" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.restassured.testcases.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.restassured.testcases" />
-      <option name="MAIN_CLASS_NAME" value="com.restassured.testcases.UserTestCase" />
-      <option name="METHOD_NAME" value="createUser" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.UserTestCase" />
         <item itemvalue="TestNG.StoreTestCase" />
         <item itemvalue="TestNG.PetTestCase" />
-        <item itemvalue="TestNG.C:/Users/Qapitol QA/IdeaProjects/ApiFrameworkComplete/testng.xml" />
-        <item itemvalue="TestNG.UserTestCase" />
-        <item itemvalue="TestNG.UserTestCase.createUser" />
+        <item itemvalue="TestNG.PetTestCase.deletePetId" />
+        <item itemvalue="TestNG.PetTestCase.getPetById" />
       </list>
     </recent_temporary>
   </component>
@@ -198,7 +202,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/restassured/testcases/PetTestCase.java</url>
-          <line>97</line>
+          <line>95</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
