@@ -2,7 +2,6 @@ package com.restassured.testcases;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
-import com.restassured.endpoints.PetEndPoints;
 import com.restassured.endpoints.Routes;
 import com.restassured.payloads.Pet;
 import com.restassured.utility.Reusables;
